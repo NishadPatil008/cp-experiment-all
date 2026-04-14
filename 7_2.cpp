@@ -1,27 +1,24 @@
 #include <iostream>
-#include <vector>
-
+#include <algorithm> 
 using namespace std;
-
 int main() {
-    vector<int> v = {5, 2, 9, 1, 6};
-    int n = v.size();
-
-    for (int i = 1; i < n; i++) {
-        int key = v[i];
-        int j = i - 1;
-
-        while (j >= 0 && v[j] > key) {
-            v[j + 1] = v[j];
-            j = j - 1;
-        }
-        v[j + 1] = key;
-    }
-
+    int a[100], n;
+    cout << "Enter size: ";
+    cin >> n;
+    cout << "Enter elements:\n";
     for (int i = 0; i < n; i++) {
-        cout << v[i] << " ";
+        cin >> a[i];
     }
-    cout << endl;
-
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (a[j] > a[j+1]) {
+                swap(a[j], a[j+1]);
+            }
+        }
+    }
+    cout << "Sorted array:\n";
+    for (int i = 0; i < n; i++) {
+        cout << a[i] << "\n";
+    }
     return 0;
 }

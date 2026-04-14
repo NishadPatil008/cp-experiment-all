@@ -1,21 +1,23 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
-
 using namespace std;
-
+void insertion(int a[], int n) {
+    for (int i = 1; i < n; i++) {
+        int j = i;
+        while (j > 0 && a[j] < a[j-1]) {
+            swap(a[j], a[j-1]);
+            j--;
+        }
+    }
+}
 int main() {
-    vector<int> vec = {8, 3, 5, 2, 9, 1};
-    int n = vec.size();
-
-    for (auto it = vec.begin(); it != vec.end(); ++it) {
-        rotate(upper_bound(vec.begin(), it, *it), it, next(it));
-    }
-
+    int a[] = {5, 2, 4, 6, 1, 3};
+    int n = 6;    
+    insertion(a, n);
+    cout << "Output:\n";
     for (int i = 0; i < n; i++) {
-        cout << vec[i] << " ";
+        cout << a[i] << " ";
     }
-    cout << endl;
-
+    cout << "\n";   
     return 0;
 }
