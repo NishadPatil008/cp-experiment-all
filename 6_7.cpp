@@ -1,30 +1,36 @@
 #include <iostream>
-#include <vector>
-
 using namespace std;
 
 int main() {
-    vector<int> arr = {2, 3, 5, 8, 9, 10, 11};
-    int key = 17; 
-
-    int left = 0;
-    int right = arr.size() - 1;
-
-    while (left < right) {
-        int sum = arr[left] + arr[right];
-
-        if (sum == key) {
-            cout << "Found: " << arr[left] << " and " << arr[right] << endl;
-            return 0;
-        } 
-        else if (sum < key) {
-            left++;
-        } 
+    int a[100], i, j, target, n;
+    
+    cout << "Enter no. of elements: ";
+    cin >> n;
+    
+    cout << "Enter elements (Must be sorted): ";
+    for (i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    
+    cout << "Enter target: ";
+    cin >> target;
+    
+    i = 0;
+    j = n - 1;
+    
+    while (i < j) {
+        if (a[i] + a[j] == target) {
+            cout << a[i] << " " << a[j] << endl;
+            i++;
+            j--;
+        }
+        else if (a[i] + a[j] < target) {
+            i++;
+        }
         else {
-            right--;
+            j--;
         }
     }
-
-    cout << "Not found" << endl;
+    
     return 0;
 }
